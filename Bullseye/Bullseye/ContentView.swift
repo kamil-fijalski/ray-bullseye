@@ -31,7 +31,9 @@ struct ContentView: View {
                     .font(.body)
                     .padding()
             }
-            Button(action: {}) {
+            Button(action: {
+                print("Hello!")
+            }) {
                 Text("Hit Me")
             }
         }
