@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @State private var alertIsVisible: Bool = false
     @State private var sliderValue: Double = 50.0
     @State private var game: Game = Game()
     
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
-                .edgesIgnoringSafeArea(.all)
+            BackgroundView(game: $game)
             VStack {
                 InstructionView(game: $game)
                 SliderView(sliderValue: $sliderValue)
@@ -28,7 +26,6 @@ struct ContentView: View {
 }
 
 struct InstructionView: View {
-    
     @Binding var game: Game
     
     var body: some View {
@@ -42,7 +39,6 @@ struct InstructionView: View {
 }
 
 struct SliderView: View {
-    
     @Binding var sliderValue: Double
     
     var body: some View {
@@ -55,7 +51,6 @@ struct SliderView: View {
 }
 
 struct HitMeButton: View {
-    
     @Binding var alertIsVisible: Bool
     @Binding var sliderValue: Double
     @Binding var game: Game
@@ -74,6 +69,10 @@ struct HitMeButton: View {
             })
         .foregroundColor(Color.white)
         .cornerRadius(21.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 21.0)
+                .strokeBorder(Color.white, lineWidth: 2.0)
+        )
         .alert("Hello Swift!", isPresented: $alertIsVisible) {
             Button("Awesome!") { }
         } message: {

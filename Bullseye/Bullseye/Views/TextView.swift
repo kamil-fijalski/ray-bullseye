@@ -36,9 +36,8 @@ struct LabelSliderText: View {
     var body: some View {
         Text(numText)
             .bold()
-            .font(.body)
-            .padding()
             .foregroundColor(Color("LabelColor"))
+            .frame(width: 35.0)
     }
 }
 
@@ -51,12 +50,35 @@ struct ButtonLook: View {
     }
 }
 
+struct LabelTextView: View {
+    var text: String
+    var body: some View {
+        Text(text.uppercased())
+            .foregroundColor(Color("LabelColor"))
+            .kerning(1.5)
+            .bold()
+            .font(.caption)
+    }
+}
+
+struct RoundRectTextView: View {
+    var text: String
+    var body: some View {
+        Text(text.uppercased())
+            .kerning(-0.2)
+            .bold()
+            .font(.title3)
+    }
+}
+
 struct TextView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             InstructionText(text: "Instructions")
             NumberText(number: 69)
             LabelSliderText(numText: "500860435")
+            LabelTextView(text: "Score")
+            RoundRectTextView(text: "999")
         }
     }
 }
