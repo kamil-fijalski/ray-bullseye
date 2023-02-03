@@ -17,9 +17,10 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionView(game: $game)
-                SliderView(sliderValue: $sliderValue)
+                    .padding(.bottom, 100)
                 HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
             }
+            SliderView(sliderValue: $sliderValue)
         }
     }
 }
@@ -88,11 +89,11 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
         ContentView()
-            .previewLayout(.fixed(width: 568, height: 320))
-        ContentView()
-            .previewLayout(.fixed(width: 568, height: 320))
             .preferredColorScheme(.dark)
         ContentView()
+            .previewLayout(.fixed(width: 568, height: 320))
+        ContentView()
+            .previewLayout(.fixed(width: 568, height: 320))
             .preferredColorScheme(.dark)
     }
 }

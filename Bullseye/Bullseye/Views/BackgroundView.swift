@@ -11,14 +11,14 @@ struct BackgroundView: View {
     @Binding var game: Game
     
     var body: some View {
-            VStack {
-                TopView(game: $game)
-                Spacer()
-                BottomView(game: $game)
-            }
-            .padding()
-            .background(RingsView())
+        VStack {
+            TopView(game: $game)
+            Spacer()
+            BottomView(game: $game)
         }
+        .padding()
+        .background(RingsView())
+    }
 }
 
 struct TopView: View {
@@ -62,16 +62,19 @@ struct BottomView: View {
 }
 
 struct RingsView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
             ForEach(1..<6) { ring in
                 let size = CGFloat(ring * 100)
+                let opacity = colorScheme == .dark ? 0.1 : 0.3
                 Circle()
                     .stroke(lineWidth: 20.0)
                     .fill(
-                        RadialGradient(gradient: Gradient(colors: [Color("RingColor").opacity(0.8 * 0.3), Color("RingColor").opacity(0)]), center: .center, startRadius: 100, endRadius: 300)
+                        RadialGradient(gradient: Gradient(colors: [Color("RingColor").opacity(0.8 * opacity), Color("RingColor").opacity(0)]), center: .center, startRadius: 100, endRadius: 300)
                     )
                     .frame(width: size, height: size)
             }

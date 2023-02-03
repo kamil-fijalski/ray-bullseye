@@ -9,6 +9,7 @@ import SwiftUI
 
 struct InstructionText: View {
     var text: String
+    
     var body: some View {
         Text(text.uppercased())
             .bold()
@@ -22,6 +23,7 @@ struct InstructionText: View {
 
 struct NumberText: View {
     var number: Int
+    
     var body: some View {
         Text(String(number))
             .kerning(-1.0)
@@ -33,6 +35,7 @@ struct NumberText: View {
 
 struct LabelSliderText: View {
     var numText: String
+    
     var body: some View {
         Text(numText)
             .bold()
@@ -43,6 +46,7 @@ struct LabelSliderText: View {
 
 struct ButtonLook: View {
     var text: String
+    
     var body: some View {
         Text(text.uppercased())
             .bold()
@@ -52,6 +56,7 @@ struct ButtonLook: View {
 
 struct LabelTextView: View {
     var text: String
+    
     var body: some View {
         Text(text.uppercased())
             .foregroundColor(Color("LabelColor"))
@@ -61,8 +66,35 @@ struct LabelTextView: View {
     }
 }
 
+struct BodyText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .lineSpacing(12.0)
+            .multilineTextAlignment(.center)
+    }
+}
+
+struct ButtonText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .bold()
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color("AccentColor"))
+            .cornerRadius(12.0)
+    }
+}
+
 struct RoundRectTextView: View {
     var text: String
+    
     var body: some View {
         Text(text.uppercased())
             .kerning(-0.2)
@@ -79,6 +111,9 @@ struct TextView_Previews: PreviewProvider {
             LabelSliderText(numText: "500860435")
             LabelTextView(text: "Score")
             RoundRectTextView(text: "999")
+            BodyText(text: "You Scored 200 Points\n🎉🎉🎉")
+            ButtonText(text: "Start New Round")
         }
+        .padding()
     }
 }

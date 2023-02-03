@@ -42,9 +42,9 @@ struct RoundedBottomView: View {
     
     var body: some View {
         ZStack {
-        RoundedRectangle(cornerRadius: 15.0)
-            .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2.0)
-            .frame(width: 68, height: 56)
+            RoundedRectangle(cornerRadius: 15.0)
+                .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2.0)
+                .frame(width: 68, height: 56)
             RoundRectTextView(text: text)
         }
     }
