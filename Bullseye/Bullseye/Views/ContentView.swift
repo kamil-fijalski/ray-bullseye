@@ -17,10 +17,16 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionView(game: $game)
-                    .padding(.bottom, 100)
-                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                    .padding(.bottom, alertIsVisible ? 0 : 100)
+                if alertIsVisible {
+                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                } else {
+                    HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                }
             }
-            SliderView(sliderValue: $sliderValue)
+            if !alertIsVisible {
+                SliderView(sliderValue: $sliderValue)
+            }
         }
     }
 }
@@ -74,14 +80,6 @@ struct HitMeButton: View {
             RoundedRectangle(cornerRadius: 21.0)
                 .strokeBorder(Color.white, lineWidth: 2.0)
         )
-        .alert("Hello Swift!", isPresented: $alertIsVisible) {
-            Button("Awesome!") {
-                game.startNewRound(points: game.points(sliderValue: Int(sliderValue)))
-            }
-        } message: {
-            let roundedValue: Int = Int(sliderValue.rounded())
-            Text("The slider values is: \(roundedValue)\n" + "Your points: \(game.points(sliderValue: roundedValue))")
-        }
     }
 }
 
@@ -89,11 +87,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
         ContentView()
-            .preferredColorScheme(.dark)
-        ContentView()
-            .previewLayout(.fixed(width: 568, height: 320))
-        ContentView()
-            .previewLayout(.fixed(width: 568, height: 320))
             .preferredColorScheme(.dark)
     }
 }
