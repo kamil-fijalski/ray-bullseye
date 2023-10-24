@@ -17,7 +17,7 @@ struct Game {
         var bonus: Int = 0
         
         if difference == 0 {
-            bonus = 100
+            bonus = 200
         }
         else if difference <= 2 {
             bonus = 50
