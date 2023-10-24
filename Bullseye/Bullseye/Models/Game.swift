@@ -20,7 +20,7 @@ struct Game {
             bonus = 200
         }
         else if difference <= 2 {
-            bonus = 50
+            bonus = 75
         }
         
         return 100 - difference + bonus
